@@ -1,6 +1,7 @@
 package cz.czechitas.ukol07;
 
 
+import cz.czechitas.ukol07.svatky.SeznamSvatku;
 import cz.czechitas.ukol07.svatky.SvatkySluzba;
 
 import java.io.IOException;
@@ -10,6 +11,8 @@ import java.util.List;
  * Hlaví třída pro aplikaci Svátky.
  */
 public class HlavniProgram {
+
+
     /**
      * Spouštěcí metoda celé aplikace.
      *
