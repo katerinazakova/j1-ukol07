@@ -25,8 +25,7 @@ public class SvatkySluzba {
 
 
     public SvatkySluzba() throws IOException {
-        seznamSvatku = objectMapper.readValue((JsonParser) cestaKDatum,SeznamSvatku.class);
-
+        seznamSvatku = objectMapper.readValue(cestaKDatum.toFile(), SeznamSvatku.class);
     }
 
     public List<String> vyhledatSvatkyDnes() {
@@ -34,7 +33,7 @@ public class SvatkySluzba {
     }
 
     public List<String> vyhledatSvatkyKeDni(MonthDay day) {
-        List <String> svatkyKeDni = seznamSvatku.getSvatky().stream()
+        List<String> svatkyKeDni = seznamSvatku.getSvatky().stream()
                 .filter(svatek -> svatek.getDen().equals(day))
                 .map(Svatek::getJmeno)
                 .toList();
