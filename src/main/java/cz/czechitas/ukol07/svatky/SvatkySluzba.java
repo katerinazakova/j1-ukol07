@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class SvatkySluzba {
 
@@ -24,9 +25,6 @@ public class SvatkySluzba {
 
 
     public SvatkySluzba() throws IOException {
-        // TODO načíst seznam svátků ze souboru svatky.json
-
-        // Následující řádek po vlastní implementaci smažete.
         seznamSvatku = objectMapper.readValue((JsonParser) cestaKDatum,SeznamSvatku.class);
 
     }
@@ -36,21 +34,11 @@ public class SvatkySluzba {
     }
 
     public List<String> vyhledatSvatkyKeDni(MonthDay day) {
-        List <SeznamSvatku> svatkyKeDni = new ArrayList<>(Arrays.asList(seznamSvatku));
-            String seznamSvatkyKeDni = svatkyKeDni.stream()
-                .filter(svatek -> svatek.getSvatky().equals(MonthDay)
+        List <String> svatkyKeDni = seznamSvatku.getSvatky().stream()
+                .filter(svatek -> svatek.getDen().equals(day))
                 .map(Svatek::getJmeno)
-                .collect(Collectors.toList());
+                .toList();
 
-
-        // TODO
-        // získat seznam svátků
-        // převést na Stream
-        // pomocí metody filter() vybrat jen ty, které odpovídají zadanému dni (porovnat MonthDay pomocí metodyequals())
-        // pomocí metody map() získat z objektu jméno
-        // pomocí toList() převést na List
-
-        // Následující řádek po vlastní implementaci smažete.
-        return List.of();
+        return svatkyKeDni;
     }
 }
