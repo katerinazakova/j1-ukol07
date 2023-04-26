@@ -26,11 +26,9 @@ public class SvatkySluzba {
     }
 
     public List<String> vyhledatSvatkyKeDni(MonthDay day) {
-        List<String> svatkyKeDni = seznamSvatku.getSvatky().stream()
+        return seznamSvatku.getSvatky().stream()
                 .filter(svatek -> svatek.getDen().equals(day))
                 .map(Svatek::getJmeno)
                 .toList();
-
-        return svatkyKeDni;
     }
 }
